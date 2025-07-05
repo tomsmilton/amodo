@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tsmilton - Amodo</title>
+    <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="tufte-css/tufte.css">
+    <style>
+        /* Adjust scroll position for anchor links */
+        html {
+            scroll-padding-top: 6rem; /* Adjust based on your nav height */
+            scroll-behavior: smooth;
+        }
+        
+        .divider {
+            border-bottom: 1px solid #758781;
+            margin: 1rem 0;
+            width: 87.5%;
+        }
+
+        .post-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .post-title {
+            margin: 0.5rem 0;
+        }
+
+        .post-excerpt {
+            margin-top: 0.5rem;
+        }
+
+        /* Date tile styling */
+        .date-tile {
+            display: inline-block;
+            background-color: #f9f9f9;
+            border: 1px solid #758781;
+            border-radius: 8px;
+            padding: 0.3rem 0.7rem;
+            margin-bottom: 0rem;
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.2;
+        }
+
+        /* Tag tile styling */
+        .tag-tile {
+            display: inline-block;
+            background-color: #e8f0fe;
+            border-radius: 6px;
+            padding: 0.2rem 0.6rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            font-size: 0.8rem;
+            color: #336699;
+            line-height: 1.2;
+            border: 1px solid #c0d6ea;
+        }
+        
+        .tag-container {
+            margin-bottom: 1rem;
+        }
+
+        .site-nav {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-top: 1px solid #758781;
+            border-bottom: 1px solid #758781;
+            max-width: 1400px;
+            padding-left: 1rem;
+            width: calc(87.5% - 1rem);
+            margin-left: 0;
+        }
+        .site-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            align-items: center;
+        }
+        .site-nav li {
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+        .site-nav a {
+            text-decoration: none;
+            color: #111;
+            font-size: 1.1rem;
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            display: inline-block;
+            line-height: 1;
+        }
+        .site-nav a:hover {
+            color: #666;
+        }
+        @media (max-width: 760px) {
+            .site-nav {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                width: calc(100% - 2rem);
+            }
+        }
+
+        /* Custom overrides to fix spacing */
+        article {
+            padding-top: 1rem; /* Reduce from 5rem to 1rem */
+        }
+        article > section:first-child {
+            padding-top: 0; /* Remove top padding from first section */
+        }
+        h1 {
+            margin-top: 1rem; /* Reduce from 4rem to 1rem */
+        }
+
+        /* Image grid styles */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            width: 55%;
+            justify-items: start;   
+        }
+
+        .image-grid-item {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+            gap: 0.5rem;
+        }
+
+        .section-box {
+            position: relative;
+            padding: 1rem;
+            margin: 0;
+            border: 1px solid #000000;
+        }
+
+        .section-label {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.8rem;
+            color: #000000;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .title-section {
+            background-color: #f8f9fa;
+            min-height: 2rem;
+        }
+
+        .title-content {
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #111;
+            margin: 0;
+            padding-right: 4rem;
+        }
+
+        .notes-section {
+            background-color: white;
+            min-height: 4rem;
+        }
+
+        .notes-content {
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            font-size: 1.2rem;
+            color: #333;
+            margin: 0;
+            padding-right: 0rem;
+            line-height: 1.4;
+        }
+
+        .stage-section {
+            background-color: #f8f9fa;
+            min-height: 2rem;
+        }
+
+        .stage-content {
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0;
+            padding-right: 4rem;
+        }
+
+        .misc-section {
+            background-color: white;
+            min-height: 2rem;
+        }
+
+        .misc-content {
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0;
+            padding-right: 4rem;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            background-color: white;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .image-toggle {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            width: 80px;
+            height: 24px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+        }
+
+        .image-toggle.show {
+            display: flex;
+        }
+
+        .image-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-image: url('assets/images/amodo/camera.png');
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10;
+        }
+
+        .image-toggle.active::before {
+            background-image: url('assets/images/amodo/nocamera.png');
+        }
+
+        .image-toggle::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 24px;
+            background-color: #ccc;
+            border: 1px solid #000;
+            border-radius: 12px;
+        }
+
+        .image-toggle .slider-button {
+            position: absolute;
+            top: 2px;
+            right: 26px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            z-index: 2;
+        }
+
+        .image-toggle.active .slider-button {
+            transform: translateX(24px);
+        }
+
+        /* Datestamp styling */
+        .image-datestamp {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.7rem;
+            font-weight: normal;
+            z-index: 3;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <section>
+            <h1 id="Tech" class="h1">Technologies</h1>
+
+<p>We've built a lot of technologies. We've been too busy working to show off about what we've achieved - this page is an attempt to solve that. See <a href="https://www.amododesign.com/">www.amododesign.com</a> for the corporate site.</p>
+
+</section>
+
+        <!-- New Image Grid Section -->
+        <section>
+            <div class="image-grid">
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="0">
+                            <div class="slider-button"></div>
+                        </div>
+                        <img src="assets/images/amodo/cbapp.png" alt="Tom" data-image-1="assets/images/amodo/cbapp.png" data-image-2="assets/images/amodo/cbapp_image.png">
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">CBAPP1</div>
+                        <div class="title-content">20kV electrospinner</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Complete development of a prototype medical device. Handheld 20kV electrospinner for use at the bedside.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="1">
+                            <div class="slider-button"></div>
+                        </div>
+                        <img src="assets/images/amodo/MSILC.png" alt="Tom" data-image-1="assets/images/amodo/MSILC.png" data-image-2="assets/images/amodo/msilc_image.png">
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">MSILC</div>
+                        <div class="title-content">Industrial filter press</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Complete development of a prototype medical device. Handheld 20kV electrospinner for use at the bedside.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-datestamp">March-2025</div>
+                        <div class="image-toggle" data-grid-item="2">
+                            <div class="slider-button"></div>
+                        </div>
+                        <img src="assets/images/amodo/plifunc.png" alt="Tom" data-image-1="assets/images/amodo/plifunc.png" data-image-2="assets/images/amodo/plifunc_image.jpg">
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">PLIFUNC</div>
+                        <div class="title-content">High voltage, high-resolution mechanical tester</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">A system for testing Pliantics' high-voltage electrostatic actuators. Fully characterising their performance under different conditions.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="3">
+                            <div class="slider-button"></div>
+                        </div>
+                        <img src="assets/images/amodo/ivt.png" alt="Tom" data-image-1="assets/images/amodo/ivt.png" data-image-2="assets/images/amodo/ivt_image.png">
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">IVT</div>
+                        <div class="title-content">20kV electrospinner</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Complete development of a prototype medical device. Handheld 20kV electrospinner for use at the bedside.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">CQKD</div>
+                        <div class="title-content">FPGA for Quantum Networking</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">CQKD</div>
+                        <div class="title-content">High-speed DAC</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">METZEROPS</div>
+                        <div class="title-content">Microbial electrolysis cell power supply</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Scale-out system for controlling Metzero’s microbial electrolysis cells, taking experimental readings, and supporting industrial testing.                        </div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">RSTROB</div>
+                        <div class="title-content">500 Watt Strobe Driver</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">FLEXHEG</div>
+                        <div class="title-content">AI Verification Demo</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">K40</div>
+                        <div class="title-content">Industrial wireless charger </div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">TRIB381</div>
+                        <div class="title-content">Industrial ultrasound</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+                
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">ELYPSU</div>
+                        <div class="title-content">2kV power supply</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">SPIRPRE1</div>
+                        <div class="title-content">Spinning bioreactor</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">EGS</div>
+                        <div class="title-content">Low-cost spectrometer</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="2">
+                            <div class="slider-button"></div>
+                        </div>
+                        <img src="assets/images/amodo/ph.png" alt="ph" data-image-1="assets/images/amodo/ph.png">
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">INT</div>
+                        <div class="title-content">In-line pH meter</div>
+
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="2">
+                            <div class="slider-button"></div>
+                        </div>
+                        <img src="assets/images/amodo/pressure.png" alt="pressure">
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">INT</div>
+                        <div class="title-content">In-line pressure sensor</div>
+
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="2">
+                            <div class="slider-button"></div>
+                        </div>
+                        <img src="assets/images/amodo/uv.png" alt="uv">
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">INT</div>
+                        <div class="title-content">In-line UV sensors</div>
+
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">EGS</div>
+                        <div class="title-content">POC temperature control system</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">EGS</div>
+                        <div class="title-content">In-line OD meter</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Explanation text.</div>
+                    </div>
+                </div>
+                
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">MSILC</div>
+                        <div class="title-content">Manual filter press</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Test system for down stream processing of industrial chemicals.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">INT</div>
+                        <div class="title-content">Fleet managment system</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Full-stack development of an IoT tracking system used by factory managers across europe.</div>
+                    </div>
+                </div>
+
+                <div class="image-grid-item">
+                    <div class="image-container">
+                        <div class="image-toggle" data-grid-item="5">
+                            <div class="slider-button"></div>
+                        </div>
+                    </div>
+                    <div class="section-box title-section">
+                        <div class="section-label">MSILC</div>
+                        <div class="title-content">Silica production plant</div>
+                    </div>
+                    <div class="section-box notes-section">
+                        <div class="section-label"></div>
+                        <div class="notes-content">Full-stack development of an IoT tracking system used by factory managers across europe.</div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+    </article>
+
+    <script src="nav.js"></script>
+    <script>
+        // Image toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggles = document.querySelectorAll('.image-toggle');
+            
+            toggles.forEach(function(toggle) {
+                const img = toggle.parentElement.querySelector('img');
+                const image1 = img.getAttribute('data-image-1');
+                const image2 = img.getAttribute('data-image-2');
+                
+                // Only show toggle if image2 exists and is different from image1
+                if (image2 && image1 !== image2) {
+                    toggle.classList.add('show');
+                }
+                
+                toggle.addEventListener('click', function() {
+                    const gridItem = this.getAttribute('data-grid-item');
+                    const img = this.parentElement.querySelector('img');
+                    const isActive = this.classList.contains('active');
+                    
+                    if (isActive) {
+                        // Switch to image 1
+                        img.src = img.getAttribute('data-image-1');
+                        this.classList.remove('active');
+                    } else {
+                        // Switch to image 2
+                        img.src = img.getAttribute('data-image-2');
+                        this.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
