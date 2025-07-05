@@ -137,6 +137,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start; /* Align content to the left */
+            position: relative; /* Enable absolute positioning for child elements */
         }
 
         .image-grid-item img {
@@ -157,6 +158,50 @@
             margin-top: 0.5rem;
             font-style: italic;
         }
+
+        /* Date stamp overlay styles */
+        .date-stamp {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transform: rotate(-8deg);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            z-index: 10;
+            pointer-events: none; /* Prevent interference with image interactions */
+        }
+
+        /* Alternative straight date stamp (remove rotation) */
+        .date-stamp.straight {
+            transform: none;
+        }
+
+        /* Alternative positioning options */
+        .date-stamp.top-left {
+            top: 8px;
+            left: 8px;
+            right: auto;
+        }
+
+        .date-stamp.bottom-right {
+            top: auto;
+            bottom: 8px;
+            right: 8px;
+        }
+
+        .date-stamp.bottom-left {
+            top: auto;
+            bottom: 8px;
+            left: 8px;
+            right: auto;
+        }
     </style>
 </head>
 
@@ -165,7 +210,7 @@
         <section>
             <h1 id="anecdotes" class="h1">Amodo Scrapbook</h1>
 
-<p>I'm incredibly proud of what our team has built at Amodo. We don't always share our progress, so here's a low-res scrapbook of what we're up to.</p>        
+<p>We don't always share our progress, so here's a low-res scrapbook of what we're up to.</p>        
 <p><a href="https://www.amododesign.com/">www.amododesign.com</a> for more</p>
 
 </section>
@@ -175,30 +220,37 @@
             <div class="image-grid">
                 <div class="image-grid-item">
                     <img src="assets/images/amodo/1475_001.png" alt="TA">
+                    <div class="date-stamp">June 2025</div>
                     <div class="image-caption">Tom</div>
                 </div>
                 <div class="image-grid-item">
                     <img src="assets/images/amodo/1485_001.png" alt="TA">
+                    <div class="date-stamp straight">June 2025</div>
                     <div class="image-caption">Matt and Tom</div>
                 </div>
                 <div class="image-grid-item">
                     <img src="assets/images/amodo/1476_001.png" alt="TA">
+                    <div class="date-stamp">June 2025</div>
                     <div class="image-caption">Amanda and Toby</div>
                 </div>
                 <div class="image-grid-item">
                     <img src="assets/images/amodo/1445_001.png" alt="TA">
+                    <div class="date-stamp">May 2025</div>
                     <div class="image-caption">Paddy</div>
                 </div>
                 <div class="image-grid-item">
                     <img src="assets/images/amodo/IMG_3620 Large.jpeg" alt="TA">
+                    <div class="date-stamp top-left">May 2025</div>
                     <div class="image-caption">Amanda and Tom</div>
                 </div>
                 <div class="image-grid-item">
                     <img src="assets/images/amodo/IMG_3618 Large.jpeg" alt="T">
+                    <div class="date-stamp straight">May 2025</div>
                     <div class="image-caption">Tom</div>
                 </div>
                 <div class="image-grid-item">
                     <img src="assets/images/amodo/emily.png" alt="Emily">
+                    <div class="date-stamp top-left">May 2025</div>
                     <div class="image-caption">Emily</div>
                 </div>
                 <div class="image-grid-item">
