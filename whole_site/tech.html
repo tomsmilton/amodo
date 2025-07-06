@@ -8,6 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        function toggleNav() {
+            const dropdown = document.querySelector('.nav-dropdown');
+            dropdown.classList.toggle('active');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.nav');
+            const dropdown = document.querySelector('.nav-dropdown');
+            
+            if (!nav.contains(event.target) && dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
 </head>
 <body>
     <header class="header">
@@ -19,6 +35,14 @@
                     <li><a href="scrapbook.html">Scrapbook</a></li>
                     <li><a href="logos.html">Logos</a></li>
                 </ul>
+                <button class="nav-toggle" onclick="toggleNav()">☰</button>
+                <div class="nav-dropdown">
+                    <ul>
+                        <li><a href="tech.html">Technologies</a></li>
+                        <li><a href="scrapbook.html">Scrapbook</a></li>
+                        <li><a href="logos.html">Logos</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
