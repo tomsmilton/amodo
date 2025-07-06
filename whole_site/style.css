@@ -1,0 +1,726 @@
+/* HERO SECTION SIZE CONTROL - Change these values to adjust the hero section size */
+:root {
+    --hero-width: 90vw;     /* 80% of viewport width */
+    --hero-height: 60vw;    /* 75% of width (60/80 = 0.75 ratio) */
+    --nav-width: 90vw;      /* Match hero width */
+    --border-radius: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: white;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    gap: 40px;
+}
+
+.nav {
+    width: var(--nav-width);
+    max-width: 100%;
+    background-color: #ffffff;
+    padding: 2rem 0;
+    border-top: 1px solid #758781;
+    border-bottom: 1px solid #758781;
+    margin: 0 auto;
+    position: relative;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-container li {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.nav-container a {
+    text-decoration: none;
+    color: #111;
+    font-size: 1.1rem;
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    display: inline-block;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.nav-container a:hover {
+    color: #666;
+}
+
+.contact-link {
+    margin-left: auto;
+}
+
+.hero-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.hero-logo {
+    width: 70%;
+    height: auto;
+    max-width: 70%;
+    object-fit: contain;
+}
+
+.hero-section {
+    width: var(--hero-width);
+    height: var(--hero-height);
+    max-width: 100%;
+    max-height: 80vh;
+    background: linear-gradient(-45deg, #CA4F3E, #79BCBA, #4D9FB1, #403577, #314492, #3984C2, #6A3866, #924157);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+.main-content {
+    background: white;
+    position: relative;
+    z-index: 10;
+}
+
+.grid-section {
+    padding: 4rem 0;
+    width: var(--hero-width);
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.section-divider {
+    width: var(--hero-width);
+    max-width: 100%;
+    height: 1px;
+    background-color: #000000;
+    margin: 0 auto;
+}
+
+/* Image Grid Styles */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+    width: 100%;
+    justify-items: start;
+}
+
+.image-grid-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 0.5rem;
+}
+
+.image-container {
+    width: 100%;
+    height: 300px;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.section-box {
+    position: relative;
+    padding: 1rem;
+    margin: 0;
+    border: 1px solid #000000;
+}
+
+.section-label {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.8rem;
+    color: #000000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.title-section {
+    background-color: #ffffff;
+    min-height: 2rem;
+}
+
+.title-content {
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #111;
+    margin: 0;
+    padding-right: 4rem;
+}
+
+.notes-section {
+    background-color: white;
+    min-height: 4rem;
+}
+
+.notes-content {
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+    padding-right: 0rem;
+    line-height: 1.4;
+}
+
+
+
+/* Datestamp styling */
+.image-datestamp {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.7rem;
+    font-weight: normal;
+    z-index: 3;
+    line-height: 1.2;
+}
+
+/* Tech Link Styling */
+.tech-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.tech-link:hover {
+    transform: translateY(-2px);
+}
+
+.tech-link.single-box {
+    height: 100%;
+}
+
+.scrapbook-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+
+.scrapbook-link:hover {
+    /* No hover effect */
+}
+
+.scrapbook-link.single-box {
+    height: 100%;
+}
+
+.scrapbook-link.scrapbook-size {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.scrapbook-more-container.scrapbook-item-size {
+    width: 100%;
+    height: 300px;
+    border: 0px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tech More Container */
+.tech-more-container {
+    background: linear-gradient(-45deg, #CA4F3E, #314492, #3984C2, #6A3866, #924157, #79BCBA, #4D9FB1, #403577);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 0px solid #000000;
+    min-height: 420px;
+    box-sizing: border-box;
+    opacity: 0.9;
+}
+
+.tech-more-text {
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+/* Scrapbook More Container */
+.scrapbook-more-container {
+    background: linear-gradient(-45deg, #8B4513, #CD853F, #DEB887, #F4A460, #D2691E, #A0522D, #8B7355, #696969);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 0px solid #000000;
+    min-height: 420px;
+    box-sizing: border-box;
+    opacity: 0.9;
+}
+
+.scrapbook-more-text {
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
+}
+
+/* Scrapbook Section Styles */
+.scrapbook-section {
+    padding: 4rem 0;
+    width: var(--hero-width);
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.scrapbook-section h2 {
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 2rem;
+    color: #111;
+    margin-bottom: 1rem;
+}
+
+.scrapbook-section p {
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.scrapbook-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin: 2rem 0;
+    width: 100%;
+    justify-items: start;
+}
+
+.scrapbook-grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    height: 600px;
+    width: 381px;
+}
+
+.scrapbook-grid-item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+.scrapbook-image-caption {
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #111;
+    text-align: left;
+    max-width: 200px;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.scrapbook-date-stamp {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #666;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transform: rotate(-8deg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.scrapbook-date-stamp.straight {
+    transform: none;
+}
+
+.scrapbook-date-stamp.top-left {
+    top: 8px;
+    left: 8px;
+    right: auto;
+}
+
+.scrapbook-date-stamp.bottom-right {
+    top: auto;
+    bottom: 8px;
+    right: 8px;
+}
+
+.scrapbook-date-stamp.bottom-left {
+    top: auto;
+    bottom: 8px;
+    left: 8px;
+    right: auto;
+}
+
+.badge-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.badge-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.badge-year {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.chamber-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 120px;
+}
+
+.organized-by {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+}
+
+.chamber-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.startup-badge {
+    background: rgba(255, 255, 255, 0.1);
+    min-width: 200px;
+}
+
+.startup-badge .badge-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --hero-width: 90vw;     /* 90% of viewport width on tablets */
+        --hero-height: 67.5vw;  /* 75% of width ratio maintained */
+        --nav-width: 90vw;
+        --border-radius: 0;
+    }
+    
+    .header {
+        padding-top: 20px;
+        gap: 20px;
+    }
+    
+    .hero-content {
+        padding: 20px;
+    }
+    
+    .hero-logo {
+        width: 75%;
+        max-width: 75%;
+    }
+    
+    .nav {
+        padding: 1.5rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .nav-container ul {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    
+    .nav-container a {
+        font-size: 1rem;
+    }
+    
+    .contact-link {
+        margin-left: 0;
+    }
+    
+    .grid-section {
+        padding: 2rem 0;
+    }
+    
+    .image-grid {
+        width: 100%;
+        margin: 2rem auto;
+        justify-items: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .image-container {
+        height: 250px;
+    }
+    
+    .title-content {
+        font-size: 1.1rem;
+        padding-right: 3rem;
+    }
+    
+    .notes-content {
+        font-size: 0.9rem;
+    }
+    
+    .awards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .award-badge {
+        min-width: auto;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .scrapbook-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .scrapbook-grid-item {
+        height: 250px;
+    }
+    
+    .scrapbook-grid-item img {
+        height: 190px;
+    }
+    
+    .scrapbook-more-container.scrapbook-item-size {
+        height: 250px;
+    }
+    
+    .scrapbook-link.scrapbook-size {
+        height: 250px;
+    }
+    
+    .scrapbook-more-text {
+        font-size: 1.3rem;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --hero-width: 90vw;     /* 95% of viewport width on mobile */
+        --hero-height: 71.25vw; /* 75% of width ratio maintained */
+        --nav-width: 90vw;
+        --border-radius: 0;
+    }
+    
+    .header {
+        padding-top: 10px;
+        gap: 15px;
+    }
+    
+    .hero-content {
+        padding: 15px;
+        justify-content: center;
+    }
+    
+    .hero-logo {
+        width: 85%;
+        max-width: 85%;
+    }
+    
+    .nav {
+        padding: 1rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 0.5rem;
+    }
+    
+    .nav-container ul {
+        justify-content: center;
+        gap: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-container a {
+        font-size: 0.9rem;
+    }
+    
+    .grid-section {
+        padding: 1.5rem 0;
+    }
+    
+    .image-grid {
+        width: 100%;
+        margin: 2rem auto;
+        justify-items: center;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .image-container {
+        height: 200px;
+    }
+    
+    .title-content {
+        font-size: 1rem;
+        padding-right: 2.5rem;
+    }
+    
+    .notes-content {
+        font-size: 0.85rem;
+    }
+    
+    .awards-section {
+        padding: 2rem 1rem;
+    }
+    
+    .scrapbook-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .scrapbook-grid-item {
+        height: 200px;
+    }
+    
+    .scrapbook-grid-item img {
+        height: 140px;
+    }
+    
+    .scrapbook-more-container.scrapbook-item-size {
+        height: 200px;
+    }
+    
+    .scrapbook-link.scrapbook-size {
+        height: 200px;
+    }
+    
+    .scrapbook-more-text {
+        font-size: 1.1rem;
+        padding: 0.6rem;
+    }
+}
+
+ 
