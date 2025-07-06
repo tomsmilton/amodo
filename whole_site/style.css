@@ -151,6 +151,12 @@ body {
     height: auto;
     max-width: 70%;
     object-fit: contain;
+    shape-rendering: geometricPrecision;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    will-change: transform;
 }
 
 .hero-section {
@@ -181,8 +187,6 @@ body {
     }
 }
 
-
-
 .main-content {
     background: white;
     position: relative;
@@ -201,7 +205,7 @@ body {
     max-width: 100%;
     height: 1px;
     background-color: #000000;
-    margin: 0 auto;
+    margin: 0 auto 3rem auto;
 }
 
 /* Image Grid Styles */
@@ -290,8 +294,6 @@ body {
     line-height: 1.4;
 }
 
-
-
 /* Datestamp styling */
 .image-datestamp {
     position: absolute;
@@ -334,7 +336,6 @@ body {
     width: 100%;
     transition: transform 0.3s ease;
 }
-
 
 .scrapbook-link:hover {
     /* No hover effect */
@@ -449,7 +450,7 @@ body {
 .scrapbook-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 1rem;
     margin: 2rem 0;
     width: 100%;
     justify-items: stretch;
@@ -554,13 +555,13 @@ body {
     height: 50%;
     font-size: 2.5rem;
     padding: 0;
-    background: #4D9FB1;
-    color: white;
+    background: rgba(255, 255, 255, 0.9);
+    color: #666;
     font-weight: bold;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    opacity: 0.9;
+    border: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    opacity: 1;
     z-index: 20;
     display: flex;
     align-items: center;
@@ -568,7 +569,6 @@ body {
     text-align: center;
     line-height: 1;
 }
-
 
 .badge-content {
     display: flex;
@@ -623,10 +623,18 @@ body {
     font-weight: 500;
 }
 
-
+/* Reusable Heading Styles */
+h1.section-heading {
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #111;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+}
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     :root {
         --hero-width: 90vw;     /* 90% of viewport width on tablets */
         --hero-height: 67.5vw;  /* 75% of width ratio maintained */
@@ -646,6 +654,10 @@ body {
     .hero-logo {
         width: 75%;
         max-width: 75%;
+    }
+    
+    h1.section-heading {
+        font-size: 2.2rem;
     }
     
     .nav {
@@ -707,7 +719,7 @@ body {
     
     .scrapbook-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+        gap: 0.75rem;
         justify-items: stretch;
     }
     
@@ -754,6 +766,8 @@ body {
     .hero-logo {
         width: 85%;
         max-width: 85%;
+        transform: translateZ(0) scale(1);
+        backface-visibility: hidden;
     }
     
     .nav {
@@ -827,7 +841,7 @@ body {
     
     .scrapbook-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.5rem;
         justify-items: stretch;
     }
     
@@ -850,6 +864,11 @@ body {
     .scrapbook-more-text {
         font-size: 1.1rem;
         padding: 0.6rem;
+    }
+    
+    h1.section-heading {
+        font-size: 1.8rem;
+        margin: 0 0 1rem 0;
     }
 }
 
