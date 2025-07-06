@@ -668,7 +668,7 @@ h1.section-heading {
     }
     
     .nav-container ul {
-        justify-content: center;
+        justify-content: left;
         gap: 1.5rem;
     }
     
