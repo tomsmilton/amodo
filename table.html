@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Technical Table</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+        
+        body {
+            background-color: white;
+            padding: 40px;
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            line-height: 1.4;
+            color: #1a1a1a;
+        }
+        
+        .page {
+            background-color: white;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 60px 80px;
+            position: relative;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        
+        table {
+            width: 100%;
+            border: 3px solid #1a1a1a;
+            border-collapse: collapse;
+            font-size: 13px;
+            letter-spacing: 0.02em;
+        }
+        
+        th, td {
+            border: 2px solid #1a1a1a;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            font-weight: 700;
+            text-align: center;
+            background-color: transparent;
+        }
+        
+        /* Section headers */
+        .section-header {
+            text-align: center;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            padding: 10px;
+            background-color: transparent;
+        }
+        
+        /* Column headers */
+        .column-header {
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        /* Characteristic column */
+        .characteristic {
+            font-weight: 400;
+            padding-left: 20px;
+        }
+        
+        /* Data cells */
+        .data-cell {
+            padding: 12px 20px;
+            line-height: 1.6;
+        }
+        
+        /* Bracket for grouped cells */
+        .bracket-cell {
+            position: relative;
+            padding-right: 30px;
+        }
+        
+        .bracket {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 1;
+        }
+        
+        /* Page number */
+        .page-number {
+            position: absolute;
+            bottom: 30px;
+            right: 80px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        
+        /* Slightly irregular typing effect */
+        .data-cell, .characteristic {
+            position: relative;
+        }
+        
+        /* Make text slightly uneven like typewriter */
+        td:nth-child(odd) {
+            transform: rotate(-0.05deg);
+        }
+        
+        td:nth-child(even) {
+            transform: rotate(0.05deg);
+        }
+
+        /* Redaction utility */
+        .redact {
+            display: inline-block;
+            background-color: #000;
+            color: transparent;
+            border-radius: 2px;
+            padding: 0 0.3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h2>TABLE I.- PROJECTS AT AMODO</h2>
+        
+        
+
+        <table>
+            <colgroup>
+                <col style="width: 25%;">
+                <col style="width: 37.5%;">
+                <col style="width: 37.5%;">
+            </colgroup>
+           
+            <tbody>
+                <tr>
+                    <td colspan="3" class="section-header">2025</td>
+                </tr>
+           
+                <tr>
+                    <td class="characteristic"> //
+                    </td>
+                    <td class="data-cell"><b>MINTSTIM</b> - Current mode brain stimulator and low-noise brain recording system.</td>
+                    <td class="data-cell">Thom Cousins, Sam Maxwell, Alex Welbourne, Emily Hunt</td>    
+                </tr>
+
+                <tr>
+                    <td class="characteristic" style="text-align: left;">
+                        <img src="assets/project_table/AMODO_PSRR_INJECTOR_CBs_1.png" alt="psrr" style="max-width:100%; height: auto; display: block;">
+                    </td>
+                    <td class="data-cell"> <b>MINTSTIM</b> - Test system for power supply rejection ratio.</td>
+                    <td class="data-cell">Thom Cousins</td>    
+                </tr>
+
+                <tr>
+                    <td class="characteristic"> //
+                    </td>
+                    <td class="data-cell"><span class="redact">ARTFIL</span> - Automated manufacturing system for <span class="redact">Atrimus Robotics</span>. Five times reduction in production person hours.</td>
+                    <td class="data-cell">Matt Farrow, Aran Dasan</td>
+                </tr>   
+
+                <tr>
+                    <td class="characteristic"> //
+                    </td>
+                    <td class="data-cell"><b>SHRMPZ</b> - Test setup and pilot results for improving the welfare of shrimp harvesting by using electrical stunning or culling.</td>
+                    <td class="data-cell">Amanda Matthes, Tom Green</td>
+                </tr>
+
+                <tr>
+                    <td class="characteristic" style="text-align: left;">
+                        <img src="assets/project_table/sangt_mech.png" alt="psrr" style="max-width:100%; height: auto; display: block;">
+                    </td>
+                    <td class="data-cell"><span class="redact">SANGT_MECH</span> - A new robotic actuator that increases power density by <span class="redact">10x</span><div class=""></div></td>
+                    <td class="data-cell">Paddy Appelqvist, Andy Graham</td>    
+                </tr>
+
+                <tr>
+                    <td colspan="3" class="section-header">2024</td>
+                </tr>
+
+                <tr>
+                    <td class="characteristic"> //
+                    </td>
+                    <td class="data-cell"><b>SHRMPZ</b> - Test setup and pilot results for improving the welfare of shrimp harvesting by using electrical stunning or culling.</td>
+                    <td class="data-cell">Amanda Matthes, Tom Green</td>
+                </tr>
+
+                <tr>
+                    <td class="characteristic"> //
+                    </td>
+                    <td class="data-cell"><b>SHRMPZ</b> - Test setup and pilot results for improving the welfare of shrimp harvesting by using electrical stunning or culling.</td>
+                    <td class="data-cell">Amanda Matthes, Tom Green</td>
+                </tr>
+
+                
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+
+        <h2>TABLE II. - A DIFFERENT TABLE</h2>
+
+
+        <table>
+            <colgroup>
+                <col style="width: 25%;">
+                <col style="width: 37.5%;">
+                <col style="width: 37.5%;">
+            </colgroup>
+           
+            <tbody>
+                <tr>
+                    <td colspan="3" class="section-header">2025</td>
+                </tr>
+           
+                <tr>
+                    <td class="characteristic" style="text-align: left;">
+                        <img src="assets/project_table/sangt_mech.png" alt="sangt_mech" style="max-width:100%; height: auto; display: block;">
+                    </td>
+                    <td class="data-cell">Developing Sangtera's next generation robot actuator.</td>
+                    <td class="data-cell">Paddy Appelqvist, Andy Graham</td>    
+                </tr>
+                <tr>
+                    <td class="characteristic" style="text-align: left;">
+                    <img src="assets/project_table/metzerops.png" alt="metzerops" style="max-width:100%; height: auto; display: block;">
+                </td>
+                    <td class="data-cell">Microbial electrolysis power supply. Electronics, firmware, and software for a new -- negative voltage power supply. Eight indepent channels controlling and monitoring microbial electrolysis cells in the lab and pilot plant.</td>
+                    <td class="data-cell">Toby Lane, Sam Reynolds</td>
+                </tr>
+                <tr>
+                    <td class="characteristic" style="text-align: left;">
+                    <img src="assets/project_table/IVT_noback.png" alt="metzerops" style="max-width:100%; height: auto; display: block;">
+                </td>
+                    <td class="data-cell">Continuous flow bioreactor for <span class="redact">the production of RNA</span>. Developed for the University of Sheffield</td>
+                    <td class="data-cell">Andy Graham</td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+
+
+        <h2>TABLE III. - A DIFFERENT TABLE</h2>
+
+        <br>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th class="column-header" style="width: 30%;">Characteristic</th>
+                    <th class="column-header" style="width: 35%;">GCM-1</th>
+                    <th class="column-header" style="width: 35%;">GCM-2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="section-header">Media pump assembly</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Type</td>
+                    <td class="data-cell">Fresh media and<br>waste media sepa-<br>rated by movable<br>piston</td>
+                    <td class="data-cell">Same as GCM-1</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Capacity</td>
+                    <td class="data-cell">140 ml</td>
+                    <td class="data-cell">140 ml</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Time of feeding</td>
+                    <td class="data-cell">Once a day</td>
+                    <td class="data-cell">Same as GCM-1</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Amount of feeding</td>
+                    <td class="data-cell">1 ml per chamber per<br>day; after day 12,<br>reduced to 0.5 ml<br>per 2-day period</td>
+                    <td class="data-cell">Same as GCM-1</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Timing control</td>
+                    <td class="data-cell">Internal clock no. 1</td>
+                    <td class="data-cell">Internal clock no. 2</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Feeding, each revolution<br>of pump shaft</td>
+                    <td class="data-cell">2 ml</td>
+                    <td class="data-cell">2 ml</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Indicator lamp</td>
+                    <td class="data-cell">When GCM-1 pump<br>operates, the BP-1<br>lamp illuminates</td>
+                    <td class="data-cell">When GCM-2 pump<br>operates, the BP-2<br>lamp illuminates</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="section-header">Fixative pump assembly</td>
+                </tr>   
+                <tr>
+                    <td class="characteristic">Type</td>
+                    <td class="data-cell">Fresh media and<br>waste media sepa-<br>rated by movable<br>piston</td>
+                    <td class="data-cell bracket-cell" rowspan="3">
+                        Same as GCM-1
+                        <span class="bracket">}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Capacity</td>
+                    <td class="data-cell">16 ml</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Ejection/advance</td>
+                    <td class="data-cell">1.7 ml</td>
+                </tr>
+                <tr>
+                    <td class="characteristic">Advance control</td>
+                    <td class="data-cell">Upon command by<br>program tape</td>
+                    <td class="data-cell"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="page-number">19</div>
+    </div>
+</body>
+</html>
