@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tsmilton</title>
+    <link rel="stylesheet" href="tufte-css/tufte.css">
+    <style>
+        /* Adjust scroll position for anchor links */
+        html {
+            scroll-padding-top: 6rem;
+            /* Adjust based on your nav height */
+            scroll-behavior: smooth;
+        }
+
+        .divider {
+            border-bottom: 1px solid #758781;
+            margin: 1rem 0;
+            width: 55%;
+        }
+
+        .post-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .post-title {
+            margin: 0.5rem 0;
+        }
+
+        .post-excerpt {
+            margin-top: 0.5rem;
+        }
+
+        /* Date tile styling */
+        .date-tile {
+            display: inline-block;
+            background-color: #f9f9f9;
+            border: 1px solid #758781;
+            border-radius: 8px;
+            padding: 0.3rem 0.7rem;
+            margin-bottom: 0rem;
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.2;
+        }
+
+        /* Tag tile styling */
+        .tag-tile {
+            display: inline;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .tag-tile:not(:last-child)::after {
+            content: ", ";
+        }
+
+        .tag-tile:first-child::before {
+            content: "#";
+        }
+
+        .tag-container {
+            margin-top: 0rem;
+            color: #666;
+            font-size: 0.9rem;
+            padding-bottom: 1rem;
+            /* Add padding at the bottom */
+        }
+
+        .post-section {
+            transition: opacity 0.3s ease;
+        }
+
+        .post-section.hidden {
+            display: none;
+        }
+
+        .site-nav {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            border-top: 1px solid #758781;
+            border-bottom: 1px solid #758781;
+            max-width: 1400px;
+            padding-left: 1rem;
+            width: calc(87.5% - 1rem);
+            margin-left: 0;
+        }
+
+        .site-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .site-nav li {
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .site-nav a {
+            text-decoration: none;
+            color: #111;
+            font-size: 1.1rem;
+            font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .site-nav a:hover {
+            color: #666;
+        }
+
+        @media (max-width: 760px) {
+            .site-nav {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                width: calc(100% - 2rem);
+            }
+        }
+
+        /* Custom overrides to fix spacing */
+        article {
+            padding-top: 1rem;
+            /* Reduce from 5rem to 1rem */
+        }
+
+        article>section:first-child {
+            padding-top: 0;
+            /* Remove top padding from first section */
+        }
+
+        h1 {
+            margin-top: 1rem;
+            /* Reduce from 4rem to 1rem */
+        }
+
+        .notebook-image {
+            height: auto;
+            margin-bottom: 0.5rem;
+            max-height: 20em;
+            object-fit: contain;
+        }
+
+        /* Copy button styling */
+        .copy-button {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin-top: 0;
+            margin-left: 0;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+            width: auto;
+            text-align: left;
+        }
+
+        .copy-button:hover {
+            opacity: 1;
+        }
+
+        .copy-button img {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+        }
+
+        .copy-text {
+            display: inline;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            vertical-align: middle;
+        }
+
+        /* Tooltip styling */
+        .copy-tooltip {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: none;
+            background-color: rgba(51, 51, 51, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 3s ease-in-out;
+            pointer-events: none;
+            white-space: nowrap;
+            visibility: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .copy-tooltip.show {
+            opacity: 1;
+            visibility: visible;
+            animation: fadeOut 3s ease-in-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 760px) {
+            .divider {
+                width: 100%;
+            }
+
+
+            .title-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+        }
+
+        /* Align table headers to the left */
+        table th {
+            text-align: left;
+        }
+
+        /* Make headings wrap to main body text width like paragraphs */
+        h1,
+        h2,
+        h3 {
+            width: 55%;
+        }
+
+        @media (max-width: 760px) {
+
+            h1,
+            h2,
+            h3 {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <section>
+
+
+
+            <h1 id="anecdotes" class="h1">Strobe driver for imaging rail tracks</h1>
+
+            <figure>
+                <img src="assets/project_table/RSTROB_noback.png"
+                    alt="RSTROB - A strobe driver to drive 500 Watt LEDs at 30Hz ">
+            </figure>
+
+            <h2>"Leaves on the line"</h2>
+
+            <p>
+
+                “Leaves on the line” is a running joke amongst the British population<span class="marginnote"><img
+                        src="assets/rail_vid.png" alt="A post singulatiry sidewalk." /><a
+                        href="https://www.rssb.co.uk/about-rssb/insights-and-news/blogs/low-adhesion-estimation-through-video-image-machine-learning">Video</a>
+                    about leaves on the line.</span> . How can our rail system grind to a halt because of leaves on the
+                tracks? Leaves, once compacted by trains, leave a lubricant-like residue on the rails. Lowering the
+                friction between the tracks and the train wheels, possibly causing derailment.
+
+                <br><br>
+
+                Low adhesion rail tracks reportedly cost GB Rail £350 million a year<label
+                    for="sn-extensive-use-of-sidenotes" class="margin-toggle sidenote-number"></label><input
+                    type="checkbox" id="sn-extensive-use-of-sidenotes" class="margin-toggle" /><span class="sidenote"><a
+                        href="https://www.rssb.co.uk/about-rssb/insights-and-news/blogs/low-adhesion-estimation-through-video-image-machine-learning">Rail
+                        safety and standards board.</a></span>. With more than 20,000 miles of track across England,
+                Scotland, and
+                Wales<label for="sn-extensive-use-of-sidenotes" class="margin-toggle sidenote-number"></label><input
+                    type="checkbox" id="sn-extensive-use-of-sidenotes" class="margin-toggle" /><span class="sidenote"><a
+                        href="https://www.networkrail.co.uk/running-the-railway/looking-after-the-railway/">Network
+                        Rail.</a></span>, identifying which tracks are going to cause a problem is not an easy
+                feat. If passenger trains had a system for recording friction information about tracks, then it might be
+                possible to predict where low friction will be an issue next.
+
+            </p>
+
+
+            <h2>Neural Network-Based Regression for Local Adhesion Estimation (COF-UOS-02)</h2>
+            <p>
+
+                The Lewis group have demonstrated that friction conditions on the rail head can be estimated using
+                images of the surroundings, images of the rail head and other sensor data<label
+                    for="sn-extensive-use-of-sidenotes" class="margin-toggle sidenote-number"></label><input
+                    type="checkbox" id="sn-extensive-use-of-sidenotes" class="margin-toggle" /><span class="sidenote"><a
+                        href="https://eprints.whiterose.ac.uk/id/eprint/202330/1/ASME%20JoT%202023%20AI%20Friction%20ARC.pdf">A
+                        Machine Learning Approach for Real Time Wheel/Rail Interface Friction Estimation.</a></span>. If
+                imaging systems could be integrated into passenger trains, then it
+                might be possible to identify friction problems ahead of time and resolve them before they wrought
+                havoc.
+                <br><br>
+                One problem with imaging rail tracks from moving trains is motion blur. Even if you crank your shutter
+                speed down to 1/4000th of a second, the train will have moved half a centimetre while the image was
+                being captured. To solve this, you can use a really fast, synchronised flash.
+                <br><br>
+                If instead of relying on a 250 microsecond shutter speed, you had a 6 microsecond flash, then the train
+                would have travelled less than 50 microns, a 40 times improvement. The catch is this must be
+                synchronised with the shutter, and be bright enough to overwhelm the remaining information captured
+                whilst the shutter is open, but the flash is not on.
+            </p>
+
+
+
+            <h2>System and strobe driver</h2>
+
+            <p>The system is driven by a Raspberry Pi 5<span class="marginnote"><img src="assets/rstrob_state.png"
+                        alt="A post singulatiry sidewalk." />Firmware state machine.</span>. This sets the strobe driver
+                settings (e.g. strobe power and
+                strobe duration) over I2C and communicates with the camera module. To ensure the strobe signal is synced
+                with the shutter, we broke out the cable between the Raspberry Pi and the camera. One of the lines on
+                this cable is a “trigger” which goes high when the Pi triggers the camera module to take an image. We
+                use this as a synchronisation signal - firing the strobe LEDs when this signal goes high.</p>
+
+            <figure>
+                <img src="assets/rstrob_system.jpg"
+                    alt="Figurative map of the successive losses of the French Army in the Russian campaign, 1812-1813">
+            </figure>
+
+            <p>To ensure the flash is bright enough, the board can drive 500 Watts at the output. This allows a
+                seriously bright strobe!</p>
+
+            <br><br>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Peak power delivery</th>
+                        <td>500 Watts</td>
+                    </tr>
+                    <tr>
+                        <th>Controllable pulse duration</th>
+                        <td>6-100 microseconds</td>
+                    </tr>
+                    <tr>
+                        <th>Strobe frequency</th>
+                        <td>Up to 30 Hz</td>
+                    </tr>
+                    <tr>
+                        <th>Control</th>
+                        <td>I2C from Raspberry Pi</td>
+                    </tr>
+                    <tr>
+                        <th>Trigger</th>
+                        <td>Raspberry Pi GPIO or camera trigger</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br><br>
+
+            <h2>Engineer's notes</h2>
+            <h3>Breaking out FPC/FCC</h3>
+            <p>Camera comms are fast and sensitive. You’ve got to be particularly careful not to tip the system’s
+                signal-to-noise ratio over the edge. At the start of the project, we were concerned that, by breaking
+                out the FCC between the Pi and the camera and intercepting some of the lines, we would mess up the
+                integrity of the signal. As a mitigation for this, we made the board compatible with triggering from the
+                Raspberry Pi GPIO or the camera’s trigger line.</p>
+            <h3>TPS55289-Q1</h3>
+            <p>The most interesting component of this project was the digitally controlled power supply. Because we
+                wanted to be able to set the strobe voltage and current, as well as the flash duration, we chose to use
+                a digitally controlled power supply chip.
+                <br><br>
+
+                The TPS55289-Q1 is what it says on the tin, a “36V, 8A Buck-Boost Converter with I2C Interface”.
+                <br><br>
+
+                Have we used it before
+                Phil’s notes on whether it was good to use
+            </p>
+
+
+
+        </section>
+    </article>
+
+    <script src="nav.js"></script>
+    <script>
+        // Initialize copy buttons with text
+        document.addEventListener('DOMContentLoaded', function () {
+            const copyButtons = document.querySelectorAll('.copy-button');
+            copyButtons.forEach(button => {
+                let copyText = button.querySelector('.copy-text');
+                if (!copyText) {
+                    copyText = document.createElement('span');
+                    copyText.className = 'copy-text';
+                    copyText.textContent = 'Copy link to idea';
+                    button.appendChild(copyText);
+                }
+            });
+        });
+
+        function copyLink(id) {
+            const url = window.location.href.split('#')[0] + '#' + id;
+            navigator.clipboard.writeText(url).then(() => {
+                const button = document.querySelector(`button[onclick="copyLink('${id}')"]`);
+
+                // Create tooltip if it doesn't exist
+                let tooltip = button.querySelector('.copy-tooltip');
+                if (!tooltip) {
+                    tooltip = document.createElement('div');
+                    tooltip.className = 'copy-tooltip';
+                    tooltip.textContent = 'Copied!';
+                    button.appendChild(tooltip);
+                }
+
+                // Remove any existing animation
+                tooltip.classList.remove('show');
+                void tooltip.offsetWidth; // Trigger reflow
+
+                // Show tooltip with animation
+                tooltip.classList.add('show');
+
+                // Visual feedback on button
+                const originalOpacity = button.style.opacity;
+                button.style.opacity = '1';
+                setTimeout(() => {
+                    button.style.opacity = originalOpacity;
+                }, 500);
+            });
+        }
+    </script>
+</body>
+
+</html>

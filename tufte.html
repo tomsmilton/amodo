@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tufte Page</title>
+    <link rel="stylesheet" href="tufte-css/tufte.css">
+    <style>
+      /* Constrain headings to the same text column width as paragraphs */
+      article > h1,
+      article > h2,
+      article > h3,
+      article > h4,
+      article > h5,
+      article > h6,
+      section > h1,
+      section > h2,
+      section > h3,
+      section > h4,
+      section > h5,
+      section > h6 {
+        width: 55%;
+      }
+
+      @media (max-width: 760px) {
+        article > h1,
+        article > h2,
+        article > h3,
+        article > h4,
+        article > h5,
+        article > h6,
+        section > h1,
+        section > h2,
+        section > h3,
+        section > h4,
+        section > h5,
+        section > h6 {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <h1 class="title">Tufte CSS Starter</h1>
+
+      <section>
+        <h2>Introduction</h2>
+        <p>
+          This is a minimal starter page using Tufte CSS. It demonstrates body text,
+          a sidenote, and a margin figure.
+        </p>
+
+        <p>
+          Here is a sentence with a sidenote
+          <label for="sn-1" class="margin-toggle sidenote-number"></label>
+          <input type="checkbox" id="sn-1" class="margin-toggle" />
+          <span class="sidenote">Sidenotes appear in the outer margin on wide screens and inline on small screens.</span>
+          to show standard Tufte behavior.
+        </p>
+
+        <p>
+          You can also use margin notes
+          <label for="mn-1" class="margin-toggle">&#8853;</label>
+          <input type="checkbox" id="mn-1" class="margin-toggle" />
+          <span class="marginnote">This is a margin note, toggled with the small plus symbol.</span>
+          for small asides that don't need numbering.
+        </p>
+      </section>
+
+      <section>
+        <h2>Figure Example</h2>
+        <figure class="fullwidth">
+          <img src="assets/images/logo.png" alt="Example image">
+          <figcaption>An example full-width figure with a caption.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Next Steps</h2>
+        <p>
+          Replace this content with your own material. Use <code>section</code> for logical groupings,
+          <code>figure</code> and <code>figcaption</code> for images, and sidenotes or margin notes for references and asides.
+        </p>
+      </section>
+    </article>
+  </body>
+  </html>
+
+
